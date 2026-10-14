@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='yx-phone-preview-20261014-1',FILES=["field.html","field-app.js","field-kit.js","visit-records.js","app.js","boss-data.js","boss.html","boss.js","common.js","icon-192.png","icon-512.png","icon.svg","index.html","manifest.webmanifest","styles.css","vault.json","release.json"];
+const CACHE='yx-phone-preview-20261014-2',FILES=["field.html","field-app.js","field-kit.js","visit-records.js","app.js","boss-data.js","boss.html","boss.js","common.js","icon-192.png","icon-512.png","icon.svg","index.html","manifest.webmanifest","styles.css","vault.json","release.json"];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES.map(x=>new URL(x,self.registration.scope).href))))});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('yx-phone-preview-')&&k!==CACHE)await caches.delete(k);await self.clients.claim()})())});
 self.addEventListener('message',event=>{if(event.data?.type==='ACTIVATE')self.skipWaiting()});
